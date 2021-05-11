@@ -1,7 +1,8 @@
 const https = require('https')
 const fs = require('fs')
 
-const url = process.argv[2]
+const flags = process.argv.filter(arg => arg.startsWith('-'))
+let url = process.argv.slice(2).find(arg => !arg.startsWith('-'))
 
 https.get(url, (res) => {
   let data = ''
