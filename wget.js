@@ -1,14 +1,12 @@
-console.log(process.argv)
-
-const https = require('https');
+const https = require('https')
 const fs = require('fs')
 
 const url = 'https://jsonplaceholder.typicode.com/posts'
 
 https.get(url, (res) => {
-  let data = '';  
+  let data = ''
 
-res.on('data', (chunk) => {
+  res.on('data', (chunk) => {
     data += chunk
   })
 
@@ -19,6 +17,4 @@ res.on('data', (chunk) => {
       if (err) console.log(err)
     })
   })
-}).on('error', (err) => {
-  console.log(err)
-})
+}).on('error', err => console.log(err))
