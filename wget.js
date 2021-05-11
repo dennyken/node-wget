@@ -1,7 +1,7 @@
 const https = require('https')
 const fs = require('fs')
 
-const url = 'https://jsonplaceholder.typicode.com/posts'
+const url = process.argv[2]
 
 https.get(url, (res) => {
   let data = ''
