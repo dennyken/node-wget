@@ -1,5 +1,5 @@
 const https = require('https')
-const { writeFile } = require('./resources/file')
+const { writeFile, getFileName } = require('./resources/file')
 const { parseUrl } = require('./resources/web')
 
 const flags = process.argv.filter(arg => arg.startsWith('-'))
@@ -14,10 +14,8 @@ if(url.href) {
       data += chunk
     })
   
-    res.on('end', () => {
-      const fileName = url.pathname.slice(url.pathname.lastIndexOf('/') + 1)
-  
-      writeFile(fileName, data)
+    res.on('end', () => {  
+      writeFile(getFileName(url), data)
     })
   }).on('error', err => console.log(err))
 }

@@ -5,3 +5,7 @@ exports.writeFile = (path, file) => {
     if(err) process.stderr.write('Error: Could not write file')
   })
 }
+
+exports.getFileName = (url) => {
+  return url.pathname.slice(url.pathname.lastIndexOf('/') + 1)
+}
