@@ -1,5 +1,5 @@
-const fs = require('fs')
 const https = require('https')
+const { writeFile } = require('./resources/file')
 const { parseUrl } = require('./resources/web')
 
 const flags = process.argv.filter(arg => arg.startsWith('-'))
@@ -17,9 +17,7 @@ if(url.href) {
     res.on('end', () => {
       const fileName = url.pathname.slice(url.pathname.lastIndexOf('/') + 1)
   
-      fs.writeFile(fileName, data, (err) => {
-        if (err) console.log(err)
-      })
+      writeFile(fileName, data)
     })
   }).on('error', err => console.log(err))
 }
