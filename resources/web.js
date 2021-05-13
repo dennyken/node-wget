@@ -3,7 +3,7 @@ exports.parseUrl = (url) => {
     return new URL(url)
   }
   catch (err) {
-    console.error('Error: Invalid URL') 
+    process.stderr.write('Error: Invalid URL')
   }
 
   process.exit()
